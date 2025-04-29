@@ -1,3 +1,5 @@
+import { BentoGrid } from "@/components/bentogrid";
+import { HomeCarousel } from "@/components/carousel";
 import Hero from "@/components/hero";
 
 export default function Home() {
@@ -5,6 +7,8 @@ export default function Home() {
     <div>
       <main className="">
         <Hero />
+        <HomeCarousel />
+        <BentoGrid />
       </main>
       <footer></footer>
     </div>

@@ -37,7 +37,7 @@
     --chart-3: 330 0% 44.9%;
     --chart-4: 330 0% 54.9%;
     --chart-5: 13.8 62.900000000000006% 80%;
-    
+
     --sidebar-background: 0 0% 92%;
     --sidebar-foreground: 0 0% 38%;
     --sidebar-primary: 14 63% 50%;
@@ -74,7 +74,7 @@
     --chart-3: 330 0% 14.9%;
     --chart-4: 330 0% 24.9%;
     --chart-5: 13.8 72.9% 66.7%;
-    
+
     --sidebar-background: 0 0% 7%;
     --sidebar-foreground: 30 2% 56%;
     --sidebar-primary: 14 73% 49%;
@@ -92,6 +92,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -114,6 +115,7 @@
   --tw-border-opacity: 1;
   border-color: hsl(var(--background));
 }
+
 .avatar {
   position: relative;
   display: inline-flex;
@@ -146,4 +148,25 @@
 
 .scrollbar_hidden::-webkit-scrollbar {
   display: none;
+}
+
+.footer_bg {
+  background: url(../public/footer_bg.png);
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+  animation: webshow 10s linear infinite;
+}
+
+@keyframes webshow {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: -100%;
+  }
+
 }

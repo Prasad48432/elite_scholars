@@ -60,18 +60,49 @@ const Navbar = () => {
   const [isDropdown1Open, setDropdown1Open] = useState(false);
   const [isDropdown2Open, setDropdown2Open] = useState(false);
   const countries = [
-    "US",
-    "GB",
-    "CA",
-    "AU",
-    "IE",
-    "DE",
-    "FR",
-    "IT",
-    "NZ",
-    "AE",
+    { code: "US", name: "United States" },
+    { code: "GB", name: "United Kingdom" },
+    { code: "CA", name: "Canada" },
+    { code: "AU", name: "Australia" },
+    { code: "IE", name: "Ireland" },
+    { code: "DE", name: "Germany" },
+    { code: "FR", name: "France" },
+    { code: "IT", name: "Italy" },
+    { code: "NZ", name: "New Zealand" },
+    { code: "AE", name: "United Arab Emirates" },
   ];
-  const exams = ["ielts", "gmat", "gre", "pte", "sat", "toefl"];
+  const exams = [
+    {
+      code: "ielts",
+      name: "IELTS",
+      link: "https://www.ielts.org/",
+    },
+    {
+      code: "gmat",
+      name: "GMAT",
+      link: "https://www.mba.com/exams/gmat",
+    },
+    {
+      code: "gre",
+      name: "GRE",
+      link: "https://www.ets.org/gre",
+    },
+    {
+      code: "pte",
+      name: "PTE Academic",
+      link: "https://www.pearsonpte.com/",
+    },
+    {
+      code: "sat",
+      name: "SAT",
+      link: "https://satsuite.collegeboard.org/sat",
+    },
+    {
+      code: "toefl",
+      name: "TOEFL",
+      link: "https://www.ets.org/toefl",
+    },
+  ];
   const [navbarBackground, setNavbarBackground] = useState("");
 
   useEffect(() => {
@@ -148,7 +179,7 @@ const Navbar = () => {
                       <NavigationMenu>
                         <NavigationMenuList>
                           <NavigationMenuItem>
-                            <NavigationMenuTrigger className="hover:text-primary transition-all duration-200 ease-out">
+                            <NavigationMenuTrigger className="hover:text-primary transition-all duration-200 ease-out bg-transparent hover:bg-transparent">
                               Destinations
                             </NavigationMenuTrigger>
                             <NavigationMenuContent>
@@ -156,26 +187,29 @@ const Navbar = () => {
                                 {countries.map((country, index) => (
                                   <li
                                     key={index}
-                                    className="group cursor-pointer flex items-center justify-between gap-4 p-3 rounded-md border border-primary hover:bg-muted transition-colors"
+                                    className="group/country cursor-pointer flex items-center justify-between gap-4 p-3 rounded-md border border-foreground hover:bg-muted transition-colors"
                                   >
                                     {/* Flag and Country Code */}
-                                    <div className="flex items-center gap-3">
+                                    <div
+                                      title={country.name}
+                                      className="flex items-center gap-1"
+                                    >
                                       <div className="relative w-10 h-6">
                                         <img
                                           alt={`Flag of ${country}`}
-                                          src={`https://flagsapi.com/${country}/flat/64.png`}
+                                          src={`https://flagsapi.com/${country.code}/flat/64.png`}
                                           className="w-full h-full object-contain"
                                         />
                                       </div>
-                                      <span className="font-medium">
-                                        {country}
+                                      <span className="font-medium line-clamp-1">
+                                        {country.name}
                                       </span>
                                     </div>
 
-                                    <span className="opacity-0 group-hover:translate-x-2 group-hover:opacity-100 transition-opacity text-muted-foreground">
+                                    <span className="group-hover/country:translate-x-2 opacity-50 group-hover/country:opacity-100 transition-all text-foreground">
                                       <ChevronRight
                                         strokeWidth={1}
-                                        className="text-primary"
+                                        className="text-foreground"
                                       />
                                     </span>
                                   </li>
@@ -184,22 +218,24 @@ const Navbar = () => {
                             </NavigationMenuContent>
                           </NavigationMenuItem>
                           <NavigationMenuItem>
-                            <NavigationMenuTrigger className="hover:text-primary transition-all duration-200 ease-out">
+                            <NavigationMenuTrigger className="hover:text-primary transition-all duration-200 ease-out bg-transparent">
                               Test Prep
                             </NavigationMenuTrigger>
                             <NavigationMenuContent>
-                              <div className="flex w-[400px] gap-4 p-4 md:w-[500px] lg:w-[600px] items-center justify-betweenrounded-xl bg-card">
+                              <div className="flex w-[400px] gap-4 p-4 md:w-[500px] lg:w-[600px] items-center justify-between bg-card">
                                 {/* Left: Exam Logos */}
                                 <ul className="grid grid-cols-3 gap-4 w-2/3 place-items-center">
                                   {exams.map((exam, index) => (
                                     <li
                                       key={index}
-                                      className="relative  w-20 h-12 flex items-center justify-center"
+                                      className="relative  w-20 h-12 flex items-center justify-center cursor-pointer"
                                     >
-                                      <img
-                                        alt={`Logo of ${exam}`}
-                                        src={`/${exam}.png`}
-                                      />
+                                      <a target="_blank" href={exam.link}>
+                                        <img
+                                          alt={`Logo of ${exam.name}`}
+                                          src={`/${exam.code}.png`}
+                                        />
+                                      </a>
                                     </li>
                                   ))}
                                 </ul>
@@ -277,13 +313,20 @@ const Navbar = () => {
                     <HoverCardContent className="w-fit">
                       <div className="flex justify-between space-x-4">
                         <div className="space-y-1">
-                          <a target="_blank" href="https://www.instagram.com/elitescholars.in/?hl=en" className="flex gap-2 items-center">
+                          <a
+                            target="_blank"
+                            href="https://www.instagram.com/elitescholars.in/?hl=en"
+                            className="flex gap-2 items-center"
+                          >
                             <SiInstagram />
                             <h4 className="text-sm font-semibold">
                               @elitescholars.in
                             </h4>
                           </a>
-                          <a href="tel:8919075293" className="flex gap-2 items-center">
+                          <a
+                            href="tel:8919075293"
+                            className="flex gap-2 items-center"
+                          >
                             <FiPhone />
                             <h4 className="text-sm font-semibold">
                               +91 8919075293
@@ -292,7 +335,7 @@ const Navbar = () => {
                           <div className="flex items-center pt-2">
                             <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
                             <span className="text-sm text-foreground">
-                               since 2024
+                              since 2024
                             </span>
                           </div>
                         </div>
@@ -370,6 +413,7 @@ const Navbar = () => {
                       {countries.map((country, index) => (
                         <li
                           key={index}
+                          title={country.name}
                           className="group cursor-pointer flex items-center justify-between gap-4 p-3 rounded-md border border-primary hover:bg-muted transition-colors"
                         >
                           {/* Flag and Country Code */}
@@ -377,11 +421,13 @@ const Navbar = () => {
                             <div className="relative w-10 h-6">
                               <img
                                 alt={`Flag of ${country}`}
-                                src={`https://flagsapi.com/${country}/flat/64.png`}
+                                src={`https://flagsapi.com/${country.code}/flat/64.png`}
                                 className="w-full h-full object-contain"
                               />
                             </div>
-                            <span className="font-medium">{country}</span>
+                            <span className="font-medium line-clamp-1">
+                              {country.name}
+                            </span>
                           </div>
 
                           <span className="opacity-0 group-hover:translate-x-2 group-hover:opacity-100 transition-opacity text-muted-foreground">
@@ -426,9 +472,14 @@ const Navbar = () => {
                         {exams.map((exam, index) => (
                           <li
                             key={index}
-                            className="relative  w-20 h-12 flex items-center justify-center"
+                            className="relative  w-20 h-12 flex items-center justify-center cursor-pointer"
                           >
-                            <img alt={`Logo of ${exam}`} src={`/${exam}.png`} />
+                            <a target="_blank" href={exam.link}>
+                              <img
+                                alt={`Logo of ${exam.name}`}
+                                src={`/${exam.code}.png`}
+                              />
+                            </a>
                           </li>
                         ))}
                       </ul>

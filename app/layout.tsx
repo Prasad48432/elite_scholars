@@ -3,6 +3,7 @@ import { Montserrat, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import { NavbarProvider } from "@/context/navbarcontext";
+import Footer from "@/components/footer";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -47,6 +48,7 @@ export default function RootLayout({
         <NavbarProvider>
           <Navbar />
           <div>{children}</div>
+          <Footer />
         </NavbarProvider>
       </body>
     </html>
