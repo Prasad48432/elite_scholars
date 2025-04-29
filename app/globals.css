@@ -10,75 +10,79 @@
   font-family: var(--font-bricolage);
 }
 
-
-
 @layer base {
   :root {
+    --background: 330 0% 95.1%;
+    --foreground: 30 0% 18.400000000000006%;
+    --card: 334.3 0% 88.8%;
+    --card-foreground: 30 0% 18.400000000000006%;
+    --popover: 342.9 0% 69.8%;
+    --popover-foreground: 338.2 0% 10%;
+    --primary: 13.8 62.900000000000006% 43.3%;
+    --primary-foreground: 338.2 0% 10%;
+    --secondary: 342.9 0% 69.8%;
+    --secondary-foreground: 338.2 0% 10%;
+    --muted: 330 0% 85.1%;
+    --muted-foreground: 334.3 0% 57.8%;
+    --accent: 330 0% 95.1%;
+    --accent-foreground: 30 0% 18.400000000000006%;
+    --destructive: 357.2 100% 29%;
+    --destructive-foreground: 0 0% 90%;
+    --border: 342.9 0% 69.8%;
+    --input: 342.9 0% 69.8%;
+    --ring: 13.8 62.900000000000006% 43.3%;
     --radius: 0.5rem;
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.141 0.005 285.823);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.141 0.005 285.823);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.141 0.005 285.823);
-    --primary: oklch(0.705 0.213 47.604);
-    --primary-foreground: oklch(0.98 0.016 73.684);
-    --secondary: oklch(0.967 0.001 286.375);
-    --secondary-foreground: oklch(0.21 0.006 285.885);
-    --muted: oklch(0.967 0.001 286.375);
-    --muted-foreground: oklch(0.552 0.016 285.938);
-    --accent: oklch(0.967 0.001 286.375);
-    --accent-foreground: oklch(0.21 0.006 285.885);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.92 0.004 286.32);
-    --input: oklch(0.92 0.004 286.32);
-    --ring: oklch(0.705 0.213 47.604);
-    --chart-1: oklch(0.646 0.222 41.116);
-    --chart-2: oklch(0.6 0.118 184.704);
-    --chart-3: oklch(0.398 0.07 227.392);
-    --chart-4: oklch(0.828 0.189 84.429);
-    --chart-5: oklch(0.769 0.188 70.08);
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.141 0.005 285.823);
-    --sidebar-primary: oklch(0.705 0.213 47.604);
-    --sidebar-primary-foreground: oklch(0.98 0.016 73.684);
-    --sidebar-accent: oklch(0.967 0.001 286.375);
-    --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-    --sidebar-border: oklch(0.92 0.004 286.32);
-    --sidebar-ring: oklch(0.705 0.213 47.604);
+    --chart-1: 13.8 62.900000000000006% 80%;
+    --chart-2: 342.9 0% 60.2%;
+    --chart-3: 330 0% 44.9%;
+    --chart-4: 330 0% 54.9%;
+    --chart-5: 13.8 62.900000000000006% 80%;
+    
+    --sidebar-background: 0 0% 92%;
+    --sidebar-foreground: 0 0% 38%;
+    --sidebar-primary: 14 63% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 75%;
+    --sidebar-accent-foreground: 30 0% 18.400000000000006%;
+    --sidebar-border: 0 0% 67%;
+    --sidebar-ring: 14 63% 40%;
   }
+
   .dark {
-    --background: oklch(0.141 0.005 285.823);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.21 0.006 285.885);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.21 0.006 285.885);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.646 0.222 41.116);
-    --primary-foreground: oklch(0.98 0.016 73.684);
-    --secondary: oklch(0.274 0.006 286.033);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.274 0.006 286.033);
-    --muted-foreground: oklch(0.705 0.015 286.067);
-    --accent: oklch(0.274 0.006 286.033);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.646 0.222 41.116);
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.21 0.006 285.885);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.646 0.222 41.116);
-    --sidebar-primary-foreground: oklch(0.98 0.016 73.684);
-    --sidebar-accent: oklch(0.274 0.006 286.033);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.646 0.222 41.116);
+    --background: 330 0% 14.9%;
+    --foreground: 30 2.1% 81.6%;
+    --card: 334.3 0% 12.2%;
+    --card-foreground: 30 2.1% 81.6%;
+    --popover: 342.9 0% 30.2%;
+    --popover-foreground: 338.2 0% 100%;
+    --primary: 13.8 72.9% 56.7%;
+    --primary-foreground: 338.2 0% 100%;
+    --secondary: 342.9 0% 30.2%;
+    --secondary-foreground: 338.2 0% 100%;
+    --muted: 330 0% 14.9%;
+    --muted-foreground: 334.3 0% 42.2%;
+    --accent: 330 0% 14.9%;
+    --accent-foreground: 30 2.1% 81.6%;
+    --destructive: 357.2 125.9% 71%;
+    --destructive-foreground: 0 0% 0%;
+    --border: 342.9 0% 30.2%;
+    --input: 342.9 0% 30.2%;
+    --ring: 13.8 72.9% 56.7%;
+    --radius: 0.5rem;
+    --chart-1: 13.8 72.9% 56.7%;
+    --chart-2: 342.9 0% 30.2%;
+    --chart-3: 330 0% 14.9%;
+    --chart-4: 330 0% 24.9%;
+    --chart-5: 13.8 72.9% 66.7%;
+    
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 30 2% 56%;
+    --sidebar-primary: 14 73% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 25%;
+    --sidebar-accent-foreground: 30 2.1% 81.6%;
+    --sidebar-border: 0 0% 22%;
+    --sidebar-ring: 14 73% 49%;
   }
 }
 
@@ -91,4 +95,55 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.rating {
+  position: relative;
+  display: inline-flex;
+}
+
+.avatar-group {
+  display: flex;
+  overflow: hidden;
+}
+
+.avatar-group :where(.avatar) {
+  overflow: hidden;
+  border-radius: 9999px;
+  border-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--background));
+}
+.avatar {
+  position: relative;
+  display: inline-flex;
+}
+
+@media only screen and (max-width: 800px) and (min-width: 0px) {
+  .no_scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no_scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hidden {
+    overflow: auto;
+  }
+
+  /* Hide the scrollbar */
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scrollbar_hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar_hidden::-webkit-scrollbar {
+  display: none;
 }
