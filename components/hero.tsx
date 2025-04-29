@@ -7,7 +7,7 @@ const Hero = () => {
     <section className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 lg:items-start px-8 py-12 lg:py-20 pb-20 lg:pb-24">
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-left lg:items-start">
         <h1 className="bricolage font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 flex flex-col gap-3 items-center lg:items-start">
-          <span className="relative">Study abroad with</span>
+          <span className="relative text-3xl lg:text-6xl">Study abroad with</span>
           <span className="relative">expert guidance,</span>
           <span className="relative whitespace-nowrap">
             <span className="absolute bg-neutral-content -left-2 -top-1 -bottom-1 -right-2 md:-left-3 md:-top-0 md:-bottom-0 md:-right-3 -rotate-1" />
@@ -159,10 +159,10 @@ const Hero = () => {
           src="/uday.png"
         />
         <div className="flex flex-col items-center justify-center">
-          <span className="text-3xl leading-[35px] bricolage font-bold text-primary px-4 py-1 rounded">
+          <span className="text-3xl lg:text-4xl leading-[30px] lg:leading-[16px] bricolage font-bold lg:font-extrabold text-primary px-4 py-1 rounded">
             Uday
           </span>
-          <span className="text-3xl leading-[10px] bricolage font-bold text-froeground  px-4 py-1 rounded">
+          <span className="text-2xl lg:text-3xl leading-[10px] bricolage font-semibold text-foreground  px-4 py-1 rounded">
             Marketing Head
           </span>
         </div>

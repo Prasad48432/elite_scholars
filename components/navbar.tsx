@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useNavbar } from "@/context/navbarcontext";
 import useWindowSize from "@/hooks/useWindowSize";
 import {
+  CalendarDays,
   ChevronDown,
   ChevronRight,
   LogIn,
@@ -13,7 +14,9 @@ import {
   Search,
   X,
 } from "lucide-react";
+import { FiPhone } from "react-icons/fi";
 import { AnimatePresence, motion } from "motion/react";
+import { SiInstagram } from "react-icons/si";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -25,6 +28,12 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { PiRocketLaunch, PiCubeLight } from "react-icons/pi";
+import { Button } from "./ui/button";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 const staggerVariants = {
   hidden: {
@@ -255,15 +264,41 @@ const Navbar = () => {
             ) :  */}
 
                 <div className="flex items-center gap-2">
-                  <a
-                    data-size="tiny"
-                    type="button"
-                    className="relative hover:bg-muted justify-center cursor-pointer items-center space-x-2 text-center ease-out duration-200 rounded-md outline-none transition-all outline-0 border text-foreground  text-sm px-2.5 py-1.5 hidden lg:flex"
-                    href="/dashboard/home"
-                  >
-                    <Phone strokeWidth={1} size={20} />
-                    <span className="truncate">Contact</span>
-                  </a>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <div
+                        data-size="tiny"
+                        className="relative hover:bg-muted justify-center cursor-pointer items-center space-x-2 text-center ease-out duration-200 rounded-md outline-none transition-all outline-0 border text-foreground  text-sm px-2.5 py-1.5 hidden lg:flex"
+                      >
+                        <Phone strokeWidth={1} size={20} />
+                        <span className="truncate">Contact</span>
+                      </div>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-fit">
+                      <div className="flex justify-between space-x-4">
+                        <div className="space-y-1">
+                          <a target="_blank" href="https://www.instagram.com/elitescholars.in/?hl=en" className="flex gap-2 items-center">
+                            <SiInstagram />
+                            <h4 className="text-sm font-semibold">
+                              @elitescholars.in
+                            </h4>
+                          </a>
+                          <a href="tel:8919075293" className="flex gap-2 items-center">
+                            <FiPhone />
+                            <h4 className="text-sm font-semibold">
+                              +91 8919075293
+                            </h4>
+                          </a>
+                          <div className="flex items-center pt-2">
+                            <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
+                            <span className="text-sm text-foreground">
+                               since 2024
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </HoverCardContent>
+                  </HoverCard>
                   <p className="relative hover:bg-muted justify-center cursor-pointer items-center space-x-2 text-center ease-out duration-200 rounded-md outline-none transition-all outline-0 border text-foreground text-sm px-2.5 py-1.5 hidden lg:flex">
                     <Search strokeWidth={1} size={20} />
                     <span className="truncate">Search</span>
@@ -435,6 +470,20 @@ const Navbar = () => {
                   </a>
                 </motion.div>
               ))}
+              <motion.div custom={5} variants={staggerVariants}>
+                <a href="tel:8919075293">
+                  <Button className="w-full mt-5" variant={"outline"}>
+                    <Phone strokeWidth={1} size={20} />
+                    <span className="truncate">Contact</span>
+                  </Button>
+                </a>
+              </motion.div>
+              <motion.div custom={6} variants={staggerVariants}>
+                <Button className="w-full mt-2" variant={"outline"}>
+                  <Search strokeWidth={1} size={20} />
+                  <span className="truncate">Search</span>
+                </Button>
+              </motion.div>
             </motion.nav>
           </motion.div>
         )}
