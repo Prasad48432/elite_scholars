@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Montserrat,Bricolage_Grotesque } from "next/font/google";
+import { Montserrat, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar";
+import { NavbarProvider } from "@/context/navbarcontext";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -24,8 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${bricolage.variable} montserrat`}>
-        {children}
+      <body
+        className={`${montserrat.variable} ${bricolage.variable} montserrat`}
+      >
+        <NavbarProvider>
+          <Navbar />
+          <div>{children}</div>
+        </NavbarProvider>
       </body>
     </html>
   );
