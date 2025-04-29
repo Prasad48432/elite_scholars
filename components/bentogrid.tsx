@@ -66,7 +66,7 @@ const HeaderBlock = () => (
       className="mb-4 size-14 rounded-full"
     />
     <h1 className="mb-12 text-4xl font-medium leading-tight">
-      Hi, I'm Tom.{" "}
+      Hi, I'm Prasad.{" "}
       <span className="text-zinc-400">
         I build cool websites like this one.
       </span>
