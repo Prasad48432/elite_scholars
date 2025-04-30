@@ -171,7 +171,7 @@ const EmailListBlock = () => (
       <input
         type="email"
         placeholder="Enter your email"
-        className="w-full rounded border border-zinc-700 bg-zinc-800 px-3 py-1.5 transition-colors focus:border-red-300 focus:outline-0"
+        className="w-full rounded border text-foreground bg-secondary px-3 py-1.5 transition-colors focus:border-red-300 focus:outline-0"
       />
       <button
         type="submit"
