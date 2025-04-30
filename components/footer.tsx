@@ -4,16 +4,16 @@ import { Phone } from "lucide-react";
 import { AiFillInstagram } from "react-icons/ai";
 
 const countries = [
-  { code: "US", name: "United States" },
-  { code: "GB", name: "United Kingdom" },
-  { code: "CA", name: "Canada" },
-  { code: "AU", name: "Australia" },
-  { code: "IE", name: "Ireland" },
-  { code: "DE", name: "Germany" },
-  { code: "FR", name: "France" },
-  { code: "IT", name: "Italy" },
-  { code: "NZ", name: "New Zealand" },
-  { code: "AE", name: "United Arab Emirates" },
+  { code: "US", name: "United States", link: "us" },
+  { code: "GB", name: "United Kingdom", link: "uk" },
+  { code: "CA", name: "Canada", link: "canada" },
+  { code: "AU", name: "Australia", link: "australia" },
+  { code: "IE", name: "Ireland", link: "ireland" },
+  { code: "DE", name: "Germany", link: "germany" },
+  { code: "FR", name: "France", link: "france" },
+  { code: "IT", name: "Italy", link: "italy" },
+  { code: "NZ", name: "New Zealand", link: "newzealand" },
+  { code: "AE", name: "United Arab Emirates", link: "uae" },
 ];
 
 const exams = [
@@ -123,7 +123,7 @@ const Footer = () => {
               {countries.map((country, index) => (
                 <NavLink
                   key={index}
-                  link="/#"
+                  link={`/countries/${country.link}`}
                   label={`Study in ${country.name}`}
                 />
               ))}
@@ -132,7 +132,7 @@ const Footer = () => {
               {exams.map((exam, index) => (
                 <NavLink
                   key={index}
-                  link={exam.link}
+                  link={`/exams/${exam.code}`}
                   label={`Prep for ${exam.name}`}
                 />
               ))}

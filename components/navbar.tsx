@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useNavbar } from "@/context/navbarcontext";
 import useWindowSize from "@/hooks/useWindowSize";
 import {
+  ArrowRight,
   CalendarDays,
   ChevronDown,
   ChevronRight,
@@ -49,9 +50,9 @@ const staggerVariants = {
   }),
 };
 const navItems = [
-  { id: 1, label: "Finance", href: "/pricing" },
-  { id: 2, label: "Homes", href: "/docs" },
-  { id: 3, label: "Community", href: "/blog" },
+  { id: 1, label: "Finance", href: "/" },
+  { id: 2, label: "Homes", href: "/" },
+  { id: 3, label: "Community", href: "/" },
 ];
 
 const Navbar = () => {
@@ -60,16 +61,16 @@ const Navbar = () => {
   const [isDropdown1Open, setDropdown1Open] = useState(false);
   const [isDropdown2Open, setDropdown2Open] = useState(false);
   const countries = [
-    { code: "US", name: "United States" },
-    { code: "GB", name: "United Kingdom" },
-    { code: "CA", name: "Canada" },
-    { code: "AU", name: "Australia" },
-    { code: "IE", name: "Ireland" },
-    { code: "DE", name: "Germany" },
-    { code: "FR", name: "France" },
-    { code: "IT", name: "Italy" },
-    { code: "NZ", name: "New Zealand" },
-    { code: "AE", name: "United Arab Emirates" },
+    { code: "US", name: "United States", link: "us" },
+    { code: "GB", name: "United Kingdom", link: "uk" },
+    { code: "CA", name: "Canada", link: "canada" },
+    { code: "AU", name: "Australia", link: "australia" },
+    { code: "IE", name: "Ireland", link: "ireland" },
+    { code: "DE", name: "Germany", link: "germany" },
+    { code: "FR", name: "France", link: "france" },
+    { code: "IT", name: "Italy", link: "italy" },
+    { code: "NZ", name: "New Zealand", link: "newzealand" },
+    { code: "AE", name: "United Arab Emirates", link: "uae" },
   ];
   const exams = [
     {
@@ -183,38 +184,53 @@ const Navbar = () => {
                               Destinations
                             </NavigationMenuTrigger>
                             <NavigationMenuContent>
-                              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-6 md:w-[400px] lg:w-[500px] bg-card">
-                                {countries.map((country, index) => (
-                                  <li
-                                    key={index}
-                                    className="group/country cursor-pointer flex items-center justify-between gap-4 p-3 rounded-md border border-foreground hover:bg-muted transition-colors"
-                                  >
-                                    {/* Flag and Country Code */}
-                                    <div
-                                      title={country.name}
-                                      className="flex items-center gap-1"
+                              <div className="bg-card flex flex-col items-center justify-center">
+                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-6 md:w-[400px] lg:w-[500px] bg-card">
+                                  {countries.map((country, index) => (
+                                    <a
+                                      className="flex items-center"
+                                      href={`/countries/${country.link}`}
                                     >
-                                      <div className="relative w-10 h-6">
-                                        <img
-                                          alt={`Flag of ${country}`}
-                                          src={`https://flagsapi.com/${country.code}/flat/64.png`}
-                                          className="w-full h-full object-contain"
-                                        />
-                                      </div>
-                                      <span className="font-medium line-clamp-1">
-                                        {country.name}
-                                      </span>
-                                    </div>
+                                      <li
+                                        key={index}
+                                        className="w-full group/country cursor-pointer flex items-center justify-between gap-4 p-3 rounded-md border border-foreground hover:bg-muted transition-colors"
+                                      >
+                                        {/* Flag and Country Code */}
+                                        <div
+                                          title={country.name}
+                                          className="flex items-center gap-1"
+                                        >
+                                          <div className="relative w-10 h-6">
+                                            <img
+                                              alt={`Flag of ${country}`}
+                                              src={`https://flagsapi.com/${country.code}/flat/64.png`}
+                                              className="w-full h-full object-contain"
+                                            />
+                                          </div>
+                                          <span className="font-medium line-clamp-1">
+                                            {country.name}
+                                          </span>
+                                        </div>
 
-                                    <span className="group-hover/country:translate-x-2 opacity-50 group-hover/country:opacity-100 transition-all text-foreground">
-                                      <ChevronRight
-                                        strokeWidth={1}
-                                        className="text-foreground"
-                                      />
-                                    </span>
-                                  </li>
-                                ))}
-                              </ul>
+                                        <span className="group-hover/country:translate-x-2 opacity-50 group-hover/country:opacity-100 transition-all text-foreground">
+                                          <ChevronRight
+                                            strokeWidth={1}
+                                            className="text-foreground"
+                                          />
+                                        </span>
+                                      </li>
+                                    </a>
+                                  ))}
+                                </ul>
+                                <Link href={"/countries"}>
+                                  <Button
+                                    className="mx-auto mb-4"
+                                    variant={"link"}
+                                  >
+                                    see more <ArrowRight />
+                                  </Button>
+                                </Link>
+                              </div>
                             </NavigationMenuContent>
                           </NavigationMenuItem>
                           <NavigationMenuItem>
@@ -222,46 +238,56 @@ const Navbar = () => {
                               Test Prep
                             </NavigationMenuTrigger>
                             <NavigationMenuContent>
-                              <div className="flex w-[400px] gap-4 p-4 md:w-[500px] lg:w-[600px] items-center justify-between bg-card">
-                                {/* Left: Exam Logos */}
-                                <ul className="grid grid-cols-3 gap-4 w-2/3 place-items-center">
-                                  {exams.map((exam, index) => (
-                                    <li
-                                      key={index}
-                                      className="relative  w-20 h-12 flex items-center justify-center cursor-pointer"
-                                    >
-                                      <a target="_blank" href={exam.link}>
-                                        <img
-                                          alt={`Logo of ${exam.name}`}
-                                          src={`/${exam.code}.png`}
-                                        />
-                                      </a>
-                                    </li>
-                                  ))}
-                                </ul>
+                              <div className="bg-card flex flex-col items-center justify-center">
+                                <div className="flex w-[400px] gap-4 p-4 md:w-[500px] lg:w-[600px] items-center justify-between bg-card">
+                                  {/* Left: Exam Logos */}
+                                  <ul className="grid grid-cols-3 gap-4 w-2/3 place-items-center">
+                                    {exams.map((exam, index) => (
+                                      <li
+                                        key={index}
+                                        className="relative  w-20 h-12 flex items-center justify-center cursor-pointer"
+                                      >
+                                        <a href={`/exams/${exam.code}`}>
+                                          <img
+                                            alt={`Logo of ${exam.name}`}
+                                            src={`/${exam.code}.png`}
+                                          />
+                                        </a>
+                                      </li>
+                                    ))}
+                                  </ul>
 
-                                {/* Separator */}
-                                <div className="h-32 w-px bg-border" />
+                                  {/* Separator */}
+                                  <div className="h-32 w-px bg-border" />
 
-                                {/* Right: Text + QR */}
-                                <div className="w-1/3 flex flex-col items-center text-center">
-                                  <p className="text-xl font-semibold mb-2">
-                                    Start Preparing
-                                  </p>
-                                  <div className="relative w-20 h-20">
-                                    <Image
-                                      alt="QR Code"
-                                      src="/qr.png"
-                                      fill
-                                      className="object-contain"
-                                    />
+                                  {/* Right: Text + QR */}
+                                  <div className="w-1/3 flex flex-col items-center text-center">
+                                    <p className="text-xl font-semibold mb-2">
+                                      Start Preparing
+                                    </p>
+                                    <div className="relative w-20 h-20">
+                                      <Image
+                                        alt="QR Code"
+                                        src="/qr.png"
+                                        fill
+                                        className="object-contain"
+                                      />
+                                    </div>
                                   </div>
                                 </div>
+                                <Link href={"/exams"}>
+                                  <Button
+                                    className="mx-auto mb-4"
+                                    variant={"link"}
+                                  >
+                                    see more <ArrowRight />
+                                  </Button>
+                                </Link>
                               </div>
                             </NavigationMenuContent>
                           </NavigationMenuItem>
                           <NavigationMenuItem>
-                            <Link href="/docs" legacyBehavior passHref>
+                            <Link href="/" legacyBehavior passHref>
                               <NavigationMenuLink
                                 className={navigationMenuTriggerStyle()}
                               >
@@ -270,7 +296,7 @@ const Navbar = () => {
                             </Link>
                           </NavigationMenuItem>
                           <NavigationMenuItem>
-                            <Link href="/docs" legacyBehavior passHref>
+                            <Link href="/" legacyBehavior passHref>
                               <NavigationMenuLink
                                 className={navigationMenuTriggerStyle()}
                               >
@@ -279,7 +305,7 @@ const Navbar = () => {
                             </Link>
                           </NavigationMenuItem>
                           <NavigationMenuItem>
-                            <Link href="/docs" legacyBehavior passHref>
+                            <Link href="/" legacyBehavior passHref>
                               <NavigationMenuLink
                                 className={navigationMenuTriggerStyle()}
                               >
@@ -310,13 +336,13 @@ const Navbar = () => {
                         <span className="truncate">Contact</span>
                       </div>
                     </HoverCardTrigger>
-                    <HoverCardContent className="w-fit">
+                    <HoverCardContent className="w-fit bg-card">
                       <div className="flex justify-between space-x-4">
                         <div className="space-y-1">
                           <a
                             target="_blank"
                             href="https://www.instagram.com/elitescholars.in/?hl=en"
-                            className="flex gap-2 items-center"
+                            className="flex gap-2 items-center hover:underline"
                           >
                             <SiInstagram />
                             <h4 className="text-sm font-semibold">
@@ -325,7 +351,7 @@ const Navbar = () => {
                           </a>
                           <a
                             href="tel:8919075293"
-                            className="flex gap-2 items-center"
+                            className="flex gap-2 items-center hover:underline"
                           >
                             <FiPhone />
                             <h4 className="text-sm font-semibold">
@@ -416,26 +442,31 @@ const Navbar = () => {
                           title={country.name}
                           className="group cursor-pointer flex items-center justify-between gap-4 p-3 rounded-md border border-primary hover:bg-muted transition-colors"
                         >
-                          {/* Flag and Country Code */}
-                          <div className="flex items-center gap-3">
-                            <div className="relative w-10 h-6">
-                              <img
-                                alt={`Flag of ${country}`}
-                                src={`https://flagsapi.com/${country.code}/flat/64.png`}
-                                className="w-full h-full object-contain"
-                              />
+                          <a
+                            className="flex items-center"
+                            href={`/countries/${country.link}`}
+                          >
+                            {/* Flag and Country Code */}
+                            <div className="flex items-center gap-3">
+                              <div className="relative w-10 h-6">
+                                <img
+                                  alt={`Flag of ${country}`}
+                                  src={`https://flagsapi.com/${country.code}/flat/64.png`}
+                                  className="w-full h-full object-contain"
+                                />
+                              </div>
+                              <span className="font-medium line-clamp-1">
+                                {country.name}
+                              </span>
                             </div>
-                            <span className="font-medium line-clamp-1">
-                              {country.name}
-                            </span>
-                          </div>
 
-                          <span className="opacity-0 group-hover:translate-x-2 group-hover:opacity-100 transition-opacity text-muted-foreground">
-                            <ChevronRight
-                              strokeWidth={1}
-                              className="text-primary"
-                            />
-                          </span>
+                            <span className="opacity-0 group-hover:translate-x-2 group-hover:opacity-100 transition-opacity text-muted-foreground">
+                              <ChevronRight
+                                strokeWidth={1}
+                                className="text-primary"
+                              />
+                            </span>
+                          </a>
                         </li>
                       ))}
                     </ul>
@@ -474,7 +505,7 @@ const Navbar = () => {
                             key={index}
                             className="relative  w-20 h-12 flex items-center justify-center cursor-pointer"
                           >
-                            <a target="_blank" href={exam.link}>
+                            <a href={`/exams/${exam.code}`}>
                               <img
                                 alt={`Logo of ${exam.name}`}
                                 src={`/${exam.code}.png`}
