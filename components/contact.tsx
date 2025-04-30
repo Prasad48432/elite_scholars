@@ -10,9 +10,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone } from "lucide-react";
 import { SiFacebook, SiInstagram, SiLinkedin } from "react-icons/si";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { motion, useInView } from "motion/react";
 
 export default function Contact() {
+  const contactRef = useRef(null);
+  const isContactInView = useInView(contactRef, { once: true });
   const {
     register,
     handleSubmit,
@@ -36,7 +39,13 @@ export default function Contact() {
     reset();
   };
   return (
-    <div className="w-full max-w-7xl mx-auto space-y-8 py-20  px-10 lg:px-0">
+    <motion.div
+      ref={contactRef}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={isContactInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.8, delay: 0.3 }}
+      className="w-full max-w-7xl mx-auto space-y-8 py-20  px-10 lg:px-0"
+    >
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Contact Us</h1>
         <p className="text-gray-500 dark:text-gray-400">
@@ -201,6 +210,6 @@ export default function Contact() {
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 }

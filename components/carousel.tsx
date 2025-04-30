@@ -1,5 +1,7 @@
 "use client";
 import * as React from "react";
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -85,9 +87,17 @@ const testimonials = [
 ];
 
 export function HomeCarousel() {
+  const headingRef = useRef(null);
+  const isHeadingInView = useInView(headingRef, { once: true });
   return (
     <div className="flex flex-col items-center gap-3 px-10 lg:px-0 py-20 overflow-x-visible lg:ml-32">
-      <span className="flex flex-col items-start justify-center w-full mb-3">
+      <motion.span
+        ref={headingRef}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isHeadingInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="flex flex-col items-start justify-center w-full mb-3"
+      >
         <h1 className="font-semibold text-foreground text-lg lg:text-xl">
           Success Stories
         </h1>
@@ -96,7 +106,7 @@ export function HomeCarousel() {
           <span className="underline underline-offset-1">Ambitions</span> into{" "}
           <span className="text-primary">Achievements</span>
         </p>
-      </span>
+      </motion.span>
       <Carousel
         plugins={[
           Autoplay({
@@ -106,38 +116,51 @@ export function HomeCarousel() {
         className="w-full overflow-visible"
       >
         <CarouselContent className="overflow-visible -ml-4">
-          {testimonials.map((item, index) => (
-            <CarouselItem
-              key={index}
-              className="pl-4 basis-[66.666%] sm:basis-[80%] md:basis-[50%] lg:basis-[28.5%]"
-              // sm: 1.25 cards, md: 2 cards, lg: ~3.5 cards
-            >
-              <Card>
-                <CardContent
-                  className={`relative flex flex-col gap-3 items-center justify-center h-[200px] lg:h-[300px] rounded-xl p-0`}
+          {testimonials.map((item, index) => {
+            const ref = useRef(null);
+            const isInView = useInView(ref, { once: true });
+            return (
+              <CarouselItem
+                key={index}
+                className="pl-4 basis-[66.666%] sm:basis-[80%] md:basis-[50%] lg:basis-[28.5%]"
+                // sm: 1.25 cards, md: 2 cards, lg: ~3.5 cards
+              >
+                <motion.div
+                  ref={ref}
+                  initial={{ opacity: 0, y: -30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                  <img
-                    className="object-cover rounded-t-xl h-[70%] w-full"
-                    src={item.image}
-                  />
-                  <div className="flex items-center justify-start gap-2 h-[30%] w-full px-4 bg-white/90 rounded-b-xl">
-                    <img
-                      src={item.avatar}
-                      alt="Student"
-                      className="rounded-full w-6 lg:w-12 h-6 lg:h-12"
-                    />
-                    <div className="flex flex-col gap-1 items-start justify-center text-foreground">
-                      <span className="flex text-xs lg:text-base">
-                        <p className="font-semibold">{item.name}</p>, studying
-                        at
-                      </span>
-                      <span className="text-xs lg:text-base line-clamp-1">{item.university}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </CarouselItem>
-          ))}
+                  <Card>
+                    <CardContent
+                      className={`relative flex flex-col gap-3 items-center justify-center h-[200px] lg:h-[300px] rounded-xl p-0`}
+                    >
+                      <img
+                        className="object-cover rounded-t-xl h-[70%] w-full"
+                        src={item.image}
+                      />
+                      <div className="flex items-center justify-start gap-2 h-[30%] w-full px-4 bg-white/90 rounded-b-xl">
+                        <img
+                          src={item.avatar}
+                          alt="Student"
+                          className="rounded-full w-6 lg:w-12 h-6 lg:h-12"
+                        />
+                        <div className="flex flex-col gap-1 items-start justify-center text-foreground">
+                          <span className="flex text-xs lg:text-base">
+                            <p className="font-semibold">{item.name}</p>,
+                            studying at
+                          </span>
+                          <span className="text-xs lg:text-base line-clamp-1">
+                            {item.university}
+                          </span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </CarouselItem>
+            );
+          })}
         </CarouselContent>
       </Carousel>
     </div>

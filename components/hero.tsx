@@ -1,13 +1,28 @@
+"use client";
 import React from "react";
 import { Button } from "./ui/button";
 import { ChevronRight } from "lucide-react";
+import { motion } from "motion/react";
 
 const Hero = () => {
   return (
     <section className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 lg:items-start px-8 py-12 lg:py-20 pb-20 lg:pb-24">
-      <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-left lg:items-start">
-        <h1 className="bricolage font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 flex flex-col gap-3 items-center lg:items-start">
-          <span className="relative text-3xl lg:text-6xl">Study abroad with</span>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-left lg:items-start"
+      >
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.1}}
+          className="bricolage font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 flex flex-col gap-3 items-center lg:items-start"
+        >
+          {" "}
+          <span className="relative text-3xl lg:text-6xl">
+            Study abroad with
+          </span>
           <span className="relative">expert guidance,</span>
           <span className="relative whitespace-nowrap">
             <span className="absolute bg-neutral-content -left-2 -top-1 -bottom-1 -right-2 md:-left-3 md:-top-0 md:-bottom-0 md:-right-3 -rotate-1" />
@@ -16,18 +31,40 @@ const Hero = () => {
               <span className="text-destructive line-through">confusion</span>
             </span>
           </span>
-        </h1>
-        <p className="md:text-lg text-base opacity-80 leading-relaxed">
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="md:text-lg text-base opacity-80 leading-relaxed"
+        >
           From choosing the right university to acing your applications — we
           simplify every step of your study abroad journey.{" "}
           <span className="hidden lg:inline">
             Get personalized support, visa guidance, and real-time updates, all
             in one place.
           </span>
-        </p>
-        <div className="flex flex-col gap-4">
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="flex flex-col gap-4"
+        >
           <div className="flex flex-col md:flex-row justify-center align-center gap-3">
-            <div className="-space-x-5 avatar-group items-center justify-center lg:justify-start">
+            <motion.div
+              className="-space-x-5 avatar-group items-center justify-center lg:justify-start"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.15,
+                  },
+                },
+              }}
+            >
               <div className="avatar w-12 h-12">
                 <img
                   alt="Srinath"
@@ -73,7 +110,7 @@ const Hero = () => {
                   className="object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
             <div className="flex flex-col justify-center items-center md:items-start gap-1">
               <div className="rating">
                 <svg
@@ -144,13 +181,25 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <Button className="rounded-full font-semibold p-6 text-white">
-            Get Started
-            <ChevronRight />
-          </Button>
-        </div>
-      </div>
-      <div className="relative max-md:-m-4 lg:w-full">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="w-full"
+          >
+            <Button className="rounded-full font-semibold p-6 text-white w-full">
+              Get Started
+              <ChevronRight />
+            </Button>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.4}}
+        className="relative max-md:-m-4 lg:w-full"
+      >
         <img
           alt="Uday Head"
           width={1080}
@@ -158,15 +207,15 @@ const Hero = () => {
           className="w-full max-w-xl ml-auto"
           src="/uday.png"
         />
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center mt-4">
           <span className="text-3xl lg:text-4xl leading-[30px] lg:leading-[16px] bricolage font-bold lg:font-extrabold text-primary px-4 py-1 rounded">
             Uday
           </span>
-          <span className="text-2xl lg:text-3xl leading-[10px] bricolage font-semibold text-foreground  px-4 py-1 rounded">
+          <span className="text-2xl lg:text-3xl leading-[10px] bricolage font-semibold text-foreground px-4 py-1 rounded">
             Marketing Head
           </span>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

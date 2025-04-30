@@ -42,6 +42,11 @@ export async function updateSession(request: NextRequest) {
     ) {
       return NextResponse.next();
     }
+
+    if (request.nextUrl.pathname.startsWith("/admin/login")) {
+      url.pathname = "/admin/dashboard";
+      return NextResponse.redirect(url);
+    }
   } else {
     if (
       request.nextUrl.pathname.startsWith("/admin") &&

@@ -344,7 +344,7 @@ const Navbar = () => {
                   </HoverCard>
                   <p className="relative hover:bg-muted justify-center cursor-pointer items-center space-x-2 text-center ease-out duration-200 rounded-md outline-none transition-all outline-0 border text-foreground text-sm px-2.5 py-1.5 hidden lg:flex">
                     <Search strokeWidth={1} size={20} />
-                    <span className="truncate">Search</span>
+                    <span className="truncate">Search Programes</span>
                   </p>
                 </div>
                 <motion.div
@@ -532,7 +532,7 @@ const Navbar = () => {
               <motion.div custom={6} variants={staggerVariants}>
                 <Button className="w-full mt-2" variant={"outline"}>
                   <Search strokeWidth={1} size={20} />
-                  <span className="truncate">Search</span>
+                  <span className="truncate">Search Programes</span>
                 </Button>
               </motion.div>
             </motion.nav>
